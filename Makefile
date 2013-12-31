@@ -3,7 +3,8 @@ SRC:=$(shell find src/ -name '*.cpp')
 TMPOBJS:=${SRC:.cpp=.o}
 OBJS:=$(foreach TMP,${TMPOBJS},$(subst src/,obj/,$(TMP)))
 DEPS:=${OBJS:.o=.d}
-INCLUDES:=$(foreach TMP,src/,-I${TMP})
+INCLUDE_DIRS:=src/
+INCLUDES:=$(foreach TMP,${INCLUDE_DIRS},-I${TMP})
 CXXFLAGS:=-std=c++0x ${INCLUDES}
 
 vpath %.cpp src/
